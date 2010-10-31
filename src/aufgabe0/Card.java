@@ -15,7 +15,7 @@ public class Card {
 	private int wert;
 	
 	public Card(int farbe, int wert) throws CardException {
-		if((farbe < 0 || farbe > 1) || (wert < 8 || wert > 12))
+		if(!Card.isValidCard(farbe, wert))
 			throw new CardException();
 		
 		this.farbe = farbe;
@@ -23,11 +23,16 @@ public class Card {
 	}
 	
 	public static boolean isValidCard(int farbe, int wert){
-		return false;
+		if((farbe < 0 || farbe > 1) || (wert < 8 || wert > 12))
+			return false;
+		return true;
 	}
 	
 	public static Card cardFromInts(int farbe, int wert) throws CardException {
-		return null;
+		if(!Card.isValidCard(farbe, wert))
+			throw new CardException();
+		
+		return new Card(farbe, wert);
 	}
 	
 	@Override
