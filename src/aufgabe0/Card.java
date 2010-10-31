@@ -15,6 +15,11 @@ public class Card {
 	private int wert;
 	
 	public Card(int farbe, int wert) throws CardException {
+		if((farbe < 0 || farbe > 1) || (wert < 8 || wert > 12))
+			throw new CardException();
+		
+		this.farbe = farbe;
+		this.wert = wert;
 	}
 	
 	public static boolean isValidCard(int farbe, int wert){
@@ -27,6 +32,9 @@ public class Card {
 	
 	@Override
 	public boolean equals(Object o){
+		if(o instanceof Card)
+			if(((Card) o).farbe == this.farbe && ((Card) o).wert == this.wert)
+				return true;
 		return false;
 	}
 }
