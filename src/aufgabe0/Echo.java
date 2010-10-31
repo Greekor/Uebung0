@@ -32,23 +32,22 @@ public class Echo {
 	}
 	
 	public void loop(){
-		
-		while(true) {
 			
-			try {
+		try {
+			
+			while(true) {
 				String tmp = read();
 				if(tmp.equalsIgnoreCase("exit"))
 					break;
 				String result = invert(tmp);
 				print(result);
-			} catch (IOException e) {
-				print("error in loop");
-				return;
 			}
 			
+			print("leaving loop");
+			
+		} catch (IOException e) {
+			print("error in loop");
 		}
-		
-		print("leaving loop");
 	}
 	
 	/**
